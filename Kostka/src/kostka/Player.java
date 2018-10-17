@@ -14,6 +14,34 @@ import java.util.Random;
  */
 public class Player {
 
+    private String name = "Adam";
+
+    //konstruktor
+    public Player(String name) {
+        //this.name = name;
+        setName(name);
+    }
+
+    //konstruktor bezparametrowy
+    public Player() {
+        this.name = "Adam";
+    }
+
+    //getter name
+    public String getName() {
+        return this.name;
+    }
+
+    //setter name
+    public void setName(String name) {
+        if (name != null && !name.isEmpty()) {
+            this.name = name;
+        } else {
+            System.err.println("Wpisz poprawne imię");
+        }
+    }
+
+    //odgadujące
     public int guess() {
         Random r = new Random();
         return r.nextInt(6) + 1;
