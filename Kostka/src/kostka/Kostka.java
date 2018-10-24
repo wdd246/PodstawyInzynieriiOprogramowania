@@ -3,19 +3,17 @@ package kostka;
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- * @author Adam
- */
 public class Kostka {
 
     public static void main(String[] args) {
         Random r = new Random();
 
-        Player player = new Player();
+        //Player player = new Player();
+        //PlayerHuman = new PlayerHuman();
+        Player player = new PlayerHuman("Adam"); //poliformizm
         int number, random;
 
-        player.setName("Adam");
-
+        //player.setName("Marcin"); //w konstruktorze bezparametrowym
         do {
             System.out.print(player.getName() + " Wpisz liczbe 1-6\n");
             number = player.guess();

@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project
-Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kostka;
 
 import java.util.Random;
 
-/**
- *
- * @author Student
- */
-public class Player {
+public abstract class Player {
 
     private String name = "Adam";
 
@@ -24,7 +14,7 @@ public class Player {
 
     //konstruktor bezparametrowy
     public Player() {
-        this.name = "Adam";
+        this.name = "Tomek";
     }
 
     //getter name
@@ -41,10 +31,6 @@ public class Player {
         }
     }
 
-    //odgadujące
-    public int guess() {
-        Random r = new Random();
-        return r.nextInt(6) + 1;
-    }
+    abstract public int guess();
 
 }
