@@ -4,7 +4,7 @@ import java.util.Random;
 
 public abstract class Player {
 
-    private String name = "Adam";
+    private String name = "Domyślny Adam";
 
     //konstruktor
     public Player(String name) {
@@ -14,7 +14,7 @@ public abstract class Player {
 
     //konstruktor bezparametrowy
     public Player() {
-        this.name = "Tomek";
+        this.name = "Domyślny Adam";
     }
 
     //getter name
@@ -24,10 +24,11 @@ public abstract class Player {
 
     //setter name
     public void setName(String name) {
-        if (name != null && !name.isEmpty()) {
+        if (name != null && name.matches("^[a-zA-Z][a-zA-Z0-9@_.\\-]{2,29}$")) {
             this.name = name;
         } else {
-            System.err.println("Wpisz poprawne imię");
+            //System.err.println("Wpisz poprawne imię");
+            throw new IllegalArgumentException("Wpisz poprawne imię");
         }
     }
 

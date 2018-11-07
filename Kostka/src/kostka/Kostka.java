@@ -10,10 +10,16 @@ public class Kostka {
 
         //Player player = new Player();
         //PlayerHuman = new PlayerHuman();
-        Player player = new PlayerHuman("Adam"); //poliformizm
+        Player player = new PlayerHuman(); //poliformizm, konstruktor parametrowy
         int number, random;
+        
+        try {
+            player.setName("ka7");
+        } catch (IllegalArgumentException ex) {
+            System.err.println("Błąd " + ex.getMessage());
+        } //catch (Exception ex){}
 
-        //player.setName("Marcin"); //w konstruktorze bezparametrowym
+        //player.setName(""); //w konstruktorze bezparametrowym
         do {
             System.out.print(player.getName() + " Wpisz liczbe 1-6\n");
             number = player.guess();
