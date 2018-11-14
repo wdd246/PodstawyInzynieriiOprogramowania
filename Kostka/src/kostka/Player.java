@@ -6,28 +6,28 @@ public abstract class Player {
 
     private String name = "Domyślny Adam";
 
-    //konstruktor
+//    konstruktor
     public Player(String name) {
-        //this.name = name;
+//        this.name = name;
         setName(name);
     }
 
-    //konstruktor bezparametrowy
+//    konstruktor bezparametrowy
     public Player() {
         this.name = "Domyślny Adam";
     }
 
-    //getter name
+//    getter name
     public String getName() {
         return this.name;
     }
 
-    //setter name
+//    setter name
     public void setName(String name) {
         if (name != null && name.matches("^[a-zA-Z][a-zA-Z0-9@_.\\-]{2,29}$")) {
             this.name = name;
         } else {
-            //System.err.println("Wpisz poprawne imię");
+//            System.err.println("Wpisz poprawne imię");
             throw new IllegalArgumentException("Wpisz poprawne imię");
         }
     }

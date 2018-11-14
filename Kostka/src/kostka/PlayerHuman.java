@@ -16,10 +16,10 @@ public class PlayerHuman extends Player {
     public PlayerHuman() {
 
     }
-   
+
     @Override //nadpisanie / przyslanianie
     //zgadujace
-    public int guess() { 
+    public int guess() {
         return in.nextInt();
     }
 }
