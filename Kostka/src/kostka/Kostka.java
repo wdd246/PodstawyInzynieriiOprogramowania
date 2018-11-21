@@ -14,7 +14,7 @@ public class Kostka {
 
 //        Player player = new Player();
 //        PlayerHuman = new PlayerHuman();
-        Player player = new PlayerHuman("fft"); //poliformizm, konstruktor parametrowy
+        Player player = new PlayerComp("Adam"); //poliformizm, konstruktor parametrowy
 
 //        try {
 //            player.setName("ka7");
@@ -22,30 +22,49 @@ public class Kostka {
 //            System.err.println("Błąd " + ex.getMessage());
 //        } //catch (Exception ex){}
 //        player.setName(""); //w konstruktorze bezparametrowym
-
         game.addPlayer(player);
+        game.addPlayer(new PlayerComp("Beata"));
+        game.addPlayer(new PlayerComp("Beata"));
+        game.addPlayer(new PlayerComp("Beata"));
+        game.addPlayer(new PlayerComp("Celina"));
+        game.removePlayer("Celina");
+        game.printPlayers();
         game.play();
-      
+
+        
         
         /* LISTY I ARRAYLISTY */
-        List<String> list = new ArrayList();
-        
-        list.add("raz");
-        list.add("dwa");
-        list.add("trzy");
+//        List<String> list = new ArrayList();
 //        
-//        for(int i=0; i<list.size();i++){
-//            System.out.println(list.get(i));
-//        }
+//        list.add("raz");
+//        list.add("dwa");
+//        list.add("trzy");
+////        
+////        for(int i=0; i<list.size();i++){
+////            System.out.println(list.get(i));
+////        }
+////        
+////        for(String o : list){
+////            System.out.println(o);
+////        }
 //        
-//        for(String o : list){
-//            System.out.println(o);
+//        Iterator<String> it = list.iterator();
+//        while(it.hasNext()){
+//            System.out.println(it.next());
 //        }
-        
-        Iterator<String> it = list.iterator();
-        while(it.hasNext()){
-            System.out.println(it.next());
-        }
+
+        /* LISTY I ARRAYLISTY 2 */
+//        List<Integer> list = new ArrayList();
+//
+//        for (int i = 10; i >= 0; i--) {
+//            list.add(i);
+//        }
+//        Iterator<Integer> it = list.iterator();
+//
+//        while (it.hasNext()) {
+//            System.out.println(it.next());
+//        }
+//        System.out.println(list);
     }
 
 }

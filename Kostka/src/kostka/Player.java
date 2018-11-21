@@ -27,7 +27,6 @@ public abstract class Player {
         if (name != null && name.matches("^[a-zA-Z][a-zA-Z0-9@_.\\-]{2,29}$")) {
             this.name = name;
         } else {
-//            System.err.println("Wpisz poprawne imię");
             throw new IllegalArgumentException("Wpisz poprawne imię");
         }
     }
