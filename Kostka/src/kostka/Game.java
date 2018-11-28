@@ -1,5 +1,8 @@
 package kostka;
 
+import kostka.player.Player;
+import kostka.stats.NullStats;
+import kostka.stats.Stats;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,11 +15,22 @@ public class Game {
     //Iterator<Player> it = list.iterator();
     protected Random r = new Random();
 
+    protected Stats stat = new NullStats();
+
+    public Game(Stats stat) {
+        this.stat = stat;
+    }
+
+    public Game() {
+
+    }
+
 //     play a game
     public void play() {
 
         int number, random;
         boolean oneMore;
+
         do {
             oneMore = true;
 
@@ -29,6 +43,7 @@ public class Game {
                     System.out.print("Źle. " + player.getName() + " podałeś " + number + " a na kostce było " + random + "\n");
                 } else {
                     oneMore = false;
+                    stat.addWinner(player.getName());
                     System.out.print(player.getName() + " wpisałeś " + number + " i zgadłeś\n");
                 }
             }
@@ -59,8 +74,8 @@ public class Game {
         }
         return false;
     }
-    
-    public void removePlayer(String name){
+
+    public void removePlayer(String name) {
 //        for (Player player : players) {
 //            if(player.getName().equals(name)) {
 //                players.remove(player);
@@ -68,14 +83,14 @@ public class Game {
 //            }
 //        }
 
-        Iterator <Player> playersit = players.iterator();
-        while(playersit.hasNext()){
-            if(playersit.next().getName().equals(name)) {
+        Iterator<Player> playersit = players.iterator();
+        while (playersit.hasNext()) {
+            if (playersit.next().getName().equals(name)) {
                 playersit.remove();
                 break;
             }
         }
-        
+
 //        for(Iterator <Player> playersit = players.iterator(); playersit.hasNext(); ){
 //            if(playersit.next().getName().equals(name)) {
 //                playersit.remove();
@@ -83,12 +98,11 @@ public class Game {
 //            }
 //        }
     }
-    
-    public void printPlayers(){
+
+    public void printPlayers() {
         System.out.println("Lista graczy:");
         for (Player player : players) {
             System.out.println(player.getName());
         }
-        
     }
 }

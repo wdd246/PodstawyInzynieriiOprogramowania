@@ -1,5 +1,8 @@
 package kostka;
 
+import kostka.player.Player;
+import kostka.player.PlayerComp;
+import kostka.stats.WinStats;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,7 +13,9 @@ public class Kostka {
 
     public static void main(String[] args) {
 
-        Game game = new Game();
+        WinStats stat = new WinStats();
+
+        Game game = new Game(stat);
 
 //        Player player = new Player();
 //        PlayerHuman = new PlayerHuman();
@@ -29,10 +34,13 @@ public class Kostka {
         game.addPlayer(new PlayerComp("Celina"));
         game.removePlayer("Celina");
         game.printPlayers();
-        game.play();
+        for (int i = 0; i < 100; i++) {
+            System.out.println("------ Game number: " + i + " ------");
+            game.play();
+        }
+        System.out.println("--------- TOP ---------");
+        stat.print();
 
-        
-        
         /* LISTY I ARRAYLISTY */
 //        List<String> list = new ArrayList();
 //        
