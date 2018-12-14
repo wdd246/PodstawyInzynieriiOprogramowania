@@ -5,96 +5,176 @@
  */
 package kostka.player;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.io.StringBufferInputStream;
-import static java.lang.System.in;
-import java.util.Scanner;
-import static jdk.nashorn.tools.ShellFunctions.input;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.w3c.dom.ranges.Range;
 
 /**
  *
- * @author adamm
+ * @author Adam Małota
  */
 public class PlayerTest {
+
+    private Player instanceParamHuman;
+    private Player instanceHuman;
+    private Player instanceParamComp;
+    private Player instanceComp;
+
+    /**
+     * Set up a intance of Player's class, for Human and Computer
+     */
+    @Before
+    public void setUpPlayer() {
+        instanceParamHuman = new PlayerHuman("Tomek");
+        instanceHuman = new PlayerHuman();
+        instanceParamComp = new PlayerComp("Lukasz");
+        instanceComp = new PlayerComp();
+    }
 
     /**
      * Test of getName method, of class Player.
      */
     @Test
     public void testGetNameHumanParam() {
-        Player instance = new PlayerHuman("Tomek");
-        String result = instance.getName();
-        assertEquals("Tomek", result);
+        assertEquals("Tomek", instanceParamHuman.getName());
     }
 
     @Test
-    public void testGetNameHumanParamFail() {
-        Player instance = new PlayerHuman("Tomek");
-        String result = instance.getName();
-        assertNotEquals("Sylwia", result);
-        assertNotEquals(null, result);
-        assertNotEquals(1, result);
-        assertNotEquals("tomek", result);
+    public void testGetNameHumanParamOtherName() {
+        assertNotEquals("Sylwia", instanceParamHuman.getName());
+    }
+
+    @Test
+    public void testGetNameHumanParamNull() {;
+        assertNotEquals(null, instanceParamHuman.getName());
+    }
+
+    @Test
+    public void testGetNameHumanParamNumber() {
+        assertNotEquals(1, instanceParamHuman.getName());
+    }
+
+    @Test
+    public void testGetNameHumanParamLower() {
+        assertNotEquals("tomek", instanceParamHuman.getName());
+    }
+
+    @Test
+    public void testGetNameHumanParamUpper() {
+        assertNotEquals("TOMEK", instanceParamHuman.getName());
+    }
+
+    @Test
+    public void testGetNameHumanParamHex() {
+        assertNotEquals(0x322, instanceParamHuman.getName());
     }
 
     @Test
     public void testGetNameHuman() {
-        Player instance = new PlayerHuman();
-        String result = instance.getName();
-        assertEquals("Domyślny Adam", result);
+        assertEquals("Domyślny Adam", instanceHuman.getName());
     }
 
     @Test
-    public void testGetNameHumanFail() {
-        Player instance = new PlayerHuman();
-        String result = instance.getName();
-        assertNotEquals("Sylwia", result);
-        assertNotEquals(null, result);
-        assertNotEquals(1, result);
-        assertNotEquals("domyślny adam", result);
+    public void testGetNameHumanOtherName() {
+        assertNotEquals("Sylwia", instanceHuman.getName());
+    }
+
+    @Test
+    public void testGetNameHumanNull() {
+        assertNotEquals(null, instanceHuman.getName());
+    }
+
+    @Test
+    public void testGetNameHumanNumber() {
+        assertNotEquals(1, instanceHuman.getName());
+    }
+
+    @Test
+    public void testGetNameHumanLower() {
+        assertNotEquals("domyślny adam", instanceHuman.getName());
+    }
+
+    @Test
+    public void testGetNameHumanUpper() {
+        assertNotEquals("DOMYŚLNY ADAM", instanceHuman.getName());
+    }
+
+    @Test
+    public void testGetNameHumanHex() {
+        assertNotEquals(0x322, instanceHuman.getName());
     }
 
     @Test
     public void testGetNameCompParam() {
-        Player instance = new PlayerComp("Lukasz");
-        String result = instance.getName();
-        assertEquals("Lukasz", result);
+        assertEquals("Lukasz", instanceParamComp.getName());
     }
 
     @Test
-    public void testGetNameCompParamFail() {
-        Player instance = new PlayerComp("Lukasz");
-        String result = instance.getName();
-        assertNotEquals("Sylwia", result);
-        assertNotEquals(null, result);
-        assertNotEquals(1, result);
-        assertNotEquals("lukasz", result);
+    public void testGetNameCompParamOtherName() {
+        assertNotEquals("Sylwia", instanceParamComp.getName());
+    }
+
+    @Test
+    public void testGetNameCompParamNull() {
+        assertNotEquals(null, instanceParamComp.getName());
+    }
+
+    @Test
+    public void testGetNameCompParamNumber() {
+        assertNotEquals(1, instanceParamComp.getName());
+    }
+
+    @Test
+    public void testGetNameCompParamLower() {
+        assertNotEquals("lukasz", instanceParamComp.getName());
+    }
+
+    @Test
+    public void testGetNameCompParamUpper() {
+        assertNotEquals("LUKASZ", instanceParamComp.getName());
+    }
+
+    @Test
+    public void testGetNameCompParamHex() {
+        assertNotEquals(0x322, instanceParamComp.getName());
     }
 
     @Test
     public void testGetNameComp() {
-        Player instance = new PlayerComp();
-        String result = instance.getName();
-        assertEquals("Domyślny Adam", result);
+        assertEquals("Domyślny Adam", instanceComp.getName());
     }
 
     @Test
-    public void testGetNameCompFail() {
-        Player instance = new PlayerComp();
-        String result = instance.getName();
-        assertNotEquals("Sylwia", result);
-        assertNotEquals(null, result);
-        assertNotEquals(1, result);
-        assertNotEquals("domyslny adam", result);
+    public void testGetNameCompOtherName() {
+        assertNotEquals("Sylwia", instanceComp.getName());
+    }
+
+    @Test
+    public void testGetNameCompNull() {
+        assertNotEquals(null, instanceComp.getName());
+    }
+
+    @Test
+    public void testGetNameCompNumber() {
+        assertNotEquals(1, instanceComp.getName());
+    }
+
+    @Test
+    public void testGetNameCompLower() {
+        assertNotEquals("domyslny adam", instanceComp.getName());
+    }
+
+    @Test
+    public void testGetNameCompUpper() {
+        assertNotEquals("DOMYŚLNY ADAM", instanceComp.getName());
+    }
+
+    @Test
+    public void testGetNameCompHex() {
+        assertNotEquals(0x322, instanceComp.getName());
     }
 
     /**
@@ -103,41 +183,113 @@ public class PlayerTest {
     @Test
     public void testSetNameHuman() {
         String name = "Kuba";
-        Player instance = new PlayerHuman();
-        instance.setName(name);
-        assertEquals("Kuba", instance.getName());
+        instanceHuman.setName(name);
+        assertEquals("Kuba", instanceHuman.getName());
     }
 
     @Test
-    public void testSetNameHumanFail() {
+    public void testSetNameHumanOtherName() {
         String name = "Kuba";
-        Player instance = new PlayerHuman();
-        instance.setName(name);
-        assertNotEquals("Sylwia", instance.getName());
-        assertNotEquals(null, instance.getName());
-        assertNotEquals(1, instance.getName());
-        assertNotEquals("kuba", instance.getName());
-        assertNotEquals("K", instance.getName());
+        instanceHuman.setName(name);
+        assertNotEquals("Sylwia", instanceHuman.getName());
+    }
+
+    @Test
+    public void testSetNameHumanNull() {
+        String name = "Kuba";
+        instanceHuman.setName(name);
+        assertNotEquals(null, instanceHuman.getName());
+    }
+
+    @Test
+    public void testSetNameHumanNumber() {
+        String name = "Kuba";
+        instanceHuman.setName(name);
+        assertNotEquals(1, instanceHuman.getName());
+    }
+
+    @Test
+    public void testSetNameHumanLower() {
+        String name = "Kuba";
+        instanceHuman.setName(name);
+        assertNotEquals("kuba", instanceHuman.getName());
+    }
+
+    @Test
+    public void testSetNameHumanUpper() {
+        String name = "Kuba";
+        instanceHuman.setName(name);
+        assertNotEquals("KUBA", instanceHuman.getName());
+    }
+
+    @Test
+    public void testSetNameHumanHex() {
+        String name = "Kuba";
+        instanceHuman.setName(name);
+        assertNotEquals(0x322, instanceHuman.getName());
+    }
+
+    @Test
+    public void testSetNameHumanNotMatchToReg() {
+        String name = "Kuba";
+        instanceHuman.setName(name);
+        assertNotEquals("K", instanceHuman.getName());
     }
 
     @Test
     public void testSetNameComp() {
         String name = "Jola";
-        Player instance = new PlayerComp();
-        instance.setName(name);
-        assertEquals("Jola", instance.getName());
+        instanceComp.setName(name);
+        assertEquals("Jola", instanceComp.getName());
     }
 
     @Test
-    public void testSetNameCompFail() {
+    public void testSetNameCompOtherName() {
         String name = "Jola";
-        Player instance = new PlayerComp();
-        instance.setName(name);
-        assertNotEquals("Sylwia", instance.getName());
-        assertNotEquals(null, instance.getName());
-        assertNotEquals(1, instance.getName());
-        assertNotEquals("jola", instance.getName());
-        assertNotEquals("K", instance.getName());
+        instanceComp.setName(name);
+        assertNotEquals("Sylwia", instanceComp.getName());
+    }
+
+    @Test
+    public void testSetNameCompNulll() {
+        String name = "Jola";
+        instanceComp.setName(name);
+        assertNotEquals(null, instanceComp.getName());
+    }
+
+    @Test
+    public void testSetNameCompNumber() {
+        String name = "Jola";
+        instanceComp.setName(name);
+        assertNotEquals(1, instanceComp.getName());
+    }
+
+    @Test
+    public void testSetNameCompLower() {
+        String name = "Jola";
+        instanceComp.setName(name);
+        assertNotEquals("jola", instanceComp.getName());
+    }
+
+    @Test
+    public void testSetNameCompUpper() {
+        String name = "Jola";
+        instanceComp.setName(name);
+        assertNotEquals("JOLA", instanceComp.getName());
+    }
+
+    @Test
+    public void testSetNameCompHex() {
+        String name = "Jola";
+        instanceComp.setName(name);
+        assertNotEquals(0x322, instanceComp.getName());
+    }
+
+    @Test
+    public void testSetNameCompNotMatchToReg() {
+        String name = "Jola";
+        instanceComp.setName(name);
+        assertNotEquals("K", instanceComp.getName());
     }
 
     /**
@@ -145,8 +297,7 @@ public class PlayerTest {
      */
     @Test
     public void testGuessComp() {
-        Player instance = new PlayerComp();
-        int num = instance.guess();
+        int num = instanceComp.guess();
         for (int i = 1; i <= 6; i++) {
             if (i == num) {
                 assertEquals(i, num);
@@ -155,13 +306,37 @@ public class PlayerTest {
     }
 
     @Test
-    public void testGuessCompFail() {
-        Player instance = new PlayerComp();
-        assertNotEquals(-1, instance.guess());
-        assertNotEquals(0, instance.guess());
-        assertNotEquals(7, instance.guess());
-        assertNotEquals(null, instance.guess());
-        assertNotEquals("Ala", instance.guess());
-        assertNotEquals('x', instance.guess());
+    public void testGuessCompNegative() {
+        assertNotEquals(-1, instanceComp.guess());
+    }
+
+    @Test
+    public void testGuessCompZero() {
+        assertNotEquals(0, instanceComp.guess());
+    }
+
+    @Test
+    public void testGuessCompBiggerNumber() {
+        assertNotEquals(7, instanceComp.guess());
+    }
+
+    @Test
+    public void testGuessCompNull() {
+        assertNotEquals(null, instanceComp.guess());
+    }
+
+    @Test
+    public void testGuessCompString() {
+        assertNotEquals("Ala", instanceComp.guess());
+    }
+
+    @Test
+    public void testGuessCompChar() {
+        assertNotEquals('x', instanceComp.guess());
+    }
+    
+    @Test
+    public void testGuessCompHex() {
+        assertNotEquals(0x322, instanceComp.guess());
     }
 }
